@@ -1,2 +1,2 @@
-# KnewToS
+# KnewTo
 KnewTo Static Page
