@@ -1,11 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 50px;
+    background-color: ##fffdfa;
+    color:#333000;
+    padding-left:3.0rem;
   }
   
   h1 {
-    color: #333;
+    color:#333000;
+    font-family: Manrope, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 4.6rem;
   }
   
