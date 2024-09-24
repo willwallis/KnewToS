@@ -10,4 +10,54 @@ body {
     font-family: Manrope, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 4.6rem;
   }
+
+  h1::first-letter {
+    font-size: 1.0em; /* Larger First Letter */
+ }
+
+ .larger-char {
+    font-size: 1.0em;
+  }
+  
+  /* countdown styles */
+  
+  #countdown {
+    display: flex;
+    align-items: center;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .odometer {
+    width: 50px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #333;
+    border-radius: 10px;
+    background: #333;
+    color: #fff;
+    font-size: 2.5em;
+    text-align: center;
+    margin-right: 5px;
+  }
+
+  .odo_white {
+    color: #000;
+    background:#fff
+  }  
+  
+  .odometer .digit {
+    position: absolute;
+    width: 100%;
+    transition: transform 0.5s ease-out;
+  }
+  
+  .digit span {
+    display: block;
+    height: 80px;
+    line-height: 80px;
+  }
+  
   
