@@ -15,8 +15,12 @@ body {
     font-size: 1.0em; /* Larger First Letter */
  }
 
- .larger-char {
-    font-size: 1.0em;
+ .closer-char {
+    letter-spacing: 0px;
+  }
+
+.wider-char {
+    letter-spacing: 3px;
   }
   
   /* countdown styles */
@@ -27,11 +31,12 @@ body {
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-family:'Courier New', Courier, monospace;
   }
   
   .odometer {
     width: 50px;
-    height: 80px;
+    height: 60px;
     overflow: hidden;
     position: relative;
     border: 3px solid #333;
@@ -44,7 +49,7 @@ body {
   }
 
   .odo_white {
-    color: #000;
+    color: #f00d0d;
     background:#fff
   }  
   
@@ -56,8 +61,8 @@ body {
   
   .digit span {
     display: block;
-    height: 80px;
-    line-height: 80px;
+    height: 60px;
+    line-height: 65px;
   }
   
   

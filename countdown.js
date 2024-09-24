@@ -44,7 +44,7 @@ function startCountdown() {
         digitContainer.appendChild(span);
       }
   
-      digitContainer.style.transform = `translateY(-${value * 80}px)`; // Move to the correct digit
+      digitContainer.style.transform = `translateY(-${value * 60}px)`; // Move to the correct digit
       odometer.appendChild(digitContainer);
     }
   
