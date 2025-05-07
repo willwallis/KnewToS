@@ -1,15 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knewto</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="images/kt_logo_ico.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knewto Consulting One Page</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="images/kt_logo_ico.png" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Numans&display=swap" rel="stylesheet" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .header-title {
+      font-family: 'Numans', sans-serif;
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <img src="images/kt_logo.png" alt="KT" id="logo">
-    </header>
+
+<body class="bg-blue-50 text-gray-800">
+
+  <!-- Slide-in Menu -->
+  <div id="menu" class="fixed top-0 left-0 h-full w-64 bg-blue-800 text-white hidden z-50 p-6 space-y-4">
+    <button id="menu-close" class="absolute top-4 right-4 text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <a href="#about" class="block hover:underline">About Us</a>
+    <a href="#services" class="block hover:underline">Services</a>
+  </div>
+  <div id="overlay" class="fixed inset-0 z-40 bg-black bg-opacity-25 hidden"></div>
+
+  <!-- Navigation -->
+  <nav class="bg-blue-950 text-white w-full px-4 py-3 flex justify-between items-center sticky top-0 z-30">
+    <button id="menu-toggle" class="focus:outline-none" aria-label="Open menu">
+      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 font-semibold header-title text-base:xl sm:text-2xl md:text-3xl">
+      KT Consulting
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about" class="pt-12 pb-12 scroll-mt-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="pb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">About Us</h2>
+        <div class="text-gray-700 space-y-4">
+          <p>We are a boutique advisory firm that partners with senior leaders to drive transformation and unlock executional excellence. With a deep understanding of business strategy, operations, and digital innovation, we help organizations bridge the gap between aspiration and delivery—achieving measurable impact, faster.</p>
+          <p>We take a hands-on, collaborative approach to implementation. From discovery through delivery, we embed alongside your teams. Whether launching a PMO, rethinking digital operations, or rolling out enterprise tech, we bring clarity and structure to complex change.</p>
+        </div>
+      </div>
+      <div class="border-b border-gray-200"></div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="pt-8 pb-12 scroll-mt-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="pb-6" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Services</h2>
+
+        <!-- Service Blocks -->
+        <!-- Strategic Planning -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Strategic Planning</h3>
+            <p>We translate vision into action. From mission alignment to initiative design and resource allocation, we build practical roadmaps that turn ambition into outcomes.</p>
+          </div>
+          <div class="w-full h-full">
+            <img src="images/Strategy.png" alt="Strategic planning concept" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <div class="mt-6"></div>
+
+        <!-- Portfolio & Project Management -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="w-full h-full order-2 md:order-1">
+            <img src="images/PM.png" alt="Project management visualization" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex flex-col justify-center p-6 bg-white text-gray-700 order-1 md:order-2">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Portfolio & Project Management</h3>
+            <p>We deliver with discipline. Our structured approach to portfolio governance and program execution ensures alignment, transparency, and results across the enterprise.</p>
+          </div>
+        </div>
+
+        <div class="mt-6"></div>
+
+        <!-- Operational Excellence -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Operational Excellence</h3>
+            <p>We simplify complexity. By redesigning core processes for efficiency, scalability, and performance, we reduce cost, minimize risk, and boost speed to value.</p>
+          </div>
+          <div class="w-full h-full">
+            <img src="images/OpsEx.png" alt="Business operations illustration" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <div class="mt-6"></div>
+
+        <!-- People & Organizational Design -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="w-full h-full order-2 md:order-1">
+            <img src="images/People.png" alt="Organizational team concept" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex flex-col justify-center p-6 bg-white text-gray-700 order-1 md:order-2">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-800">People & Organizational Design</h3>
+            <p>We empower people to perform. We shape the structures, capabilities, and cultures needed to sustain agility, engagement, and readiness for change.</p>
+          </div>
+        </div>
+
+        <div class="mt-6"></div>
+
+        <!-- Digital Enablement -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Digital Enablement</h3>
+            <p>We make innovation real. From emerging technologies to enterprise platforms, we identify opportunities, architect solutions, and guide execution to maximize business value.</p>
+          </div>
+          <div class="w-full h-full">
+            <img src="images/Digital.png" alt="Digital transformation image" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-b border-gray-200 mt-6"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow p-6 mt-10">
+    <div class="max-w-5xl mx-auto text-center text-sm text-gray-500">
+      <p>© <script>document.write(new Date().getFullYear());</script> Knewto LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+    const toggle = document.getElementById('menu-toggle');
+    const close = document.getElementById('menu-close');
+
+    function openMenu() {
+      menu.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    }
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }
+
+    toggle.addEventListener('click', openMenu);
+    close.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+  </script>
+
 </body>
+
 </html>
