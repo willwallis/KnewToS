@@ -62,8 +62,13 @@
       <div class="pb-12" data-aos="fade-up">
         <h2 class="text-3xl font-bold mb-4">About Us</h2>
         <div class="text-gray-700 space-y-4">
-          <p>We are a boutique advisory firm that partners with senior leaders to drive transformation and unlock executional excellence. With a deep understanding of business strategy, operations, and digital innovation, we help organizations bridge the gap between aspiration and delivery—achieving measurable impact, faster.</p>
-          <p>We take a hands-on, collaborative approach to implementation. From discovery through delivery, we embed alongside your teams. Whether launching a PMO, rethinking digital operations, or rolling out enterprise tech, we bring clarity and structure to complex change.</p>
+          <p>We are a boutique advisory firm that partners with senior leaders to drive transformation and unlock
+            executional excellence. With a deep understanding of business strategy, operations, and digital innovation,
+            we help organizations bridge the gap between aspiration and delivery—achieving measurable impact, faster.
+          </p>
+          <p>We take a hands-on, collaborative approach to implementation. From discovery through delivery, we embed
+            alongside your teams. Whether launching a PMO, rethinking digital operations, or rolling out enterprise
+            tech, we bring clarity and structure to complex change.</p>
         </div>
       </div>
       <div class="border-b border-gray-200"></div>
@@ -81,7 +86,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2">
           <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
             <h3 class="text-2xl font-semibold mb-4 text-blue-800">Strategic Planning</h3>
-            <p>We translate vision into action. From mission alignment to initiative design and resource allocation, we build practical roadmaps that turn ambition into outcomes.</p>
+            <p>We translate vision into action. From mission alignment to initiative design and resource allocation, we
+              build practical roadmaps that turn ambition into outcomes.</p>
           </div>
           <div class="w-full h-full">
             <img src="images/Strategy.png" alt="Strategic planning concept" class="w-full h-full object-cover" />
@@ -97,7 +103,8 @@
           </div>
           <div class="flex flex-col justify-center p-6 bg-white text-gray-700 order-1 md:order-2">
             <h3 class="text-2xl font-semibold mb-4 text-blue-800">Portfolio & Project Management</h3>
-            <p>We deliver with discipline. Our structured approach to portfolio governance and program execution ensures alignment, transparency, and results across the enterprise.</p>
+            <p>We deliver with discipline. Our structured approach to portfolio governance and program execution ensures
+              alignment, transparency, and results across the enterprise.</p>
           </div>
         </div>
 
@@ -107,7 +114,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2">
           <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
             <h3 class="text-2xl font-semibold mb-4 text-blue-800">Operational Excellence</h3>
-            <p>We simplify complexity. By redesigning core processes for efficiency, scalability, and performance, we reduce cost, minimize risk, and boost speed to value.</p>
+            <p>We simplify complexity. By redesigning core processes for efficiency, scalability, and performance, we
+              reduce cost, minimize risk, and boost speed to value.</p>
           </div>
           <div class="w-full h-full">
             <img src="images/OpsEx.png" alt="Business operations illustration" class="w-full h-full object-cover" />
@@ -123,7 +131,8 @@
           </div>
           <div class="flex flex-col justify-center p-6 bg-white text-gray-700 order-1 md:order-2">
             <h3 class="text-2xl font-semibold mb-4 text-blue-800">People & Organizational Design</h3>
-            <p>We empower people to perform. We shape the structures, capabilities, and cultures needed to sustain agility, engagement, and readiness for change.</p>
+            <p>We empower people to perform. We shape the structures, capabilities, and cultures needed to sustain
+              agility, engagement, and readiness for change.</p>
           </div>
         </div>
 
@@ -133,7 +142,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2">
           <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
             <h3 class="text-2xl font-semibold mb-4 text-blue-800">Digital Enablement</h3>
-            <p>We make innovation real. From emerging technologies to enterprise platforms, we identify opportunities, architect solutions, and guide execution to maximize business value.</p>
+            <p>We make innovation real. From emerging technologies to enterprise platforms, we identify opportunities,
+              architect solutions, and guide execution to maximize business value.</p>
           </div>
           <div class="w-full h-full">
             <img src="images/Digital.png" alt="Digital transformation image" class="w-full h-full object-cover" />
@@ -147,7 +157,9 @@
   <!-- Footer -->
   <footer class="bg-white shadow p-6 mt-10">
     <div class="max-w-5xl mx-auto text-center text-sm text-gray-500">
-      <p>© <script>document.write(new Date().getFullYear());</script> Knewto LLC. All rights reserved.</p>
+      <p>©
+        <script>document.write(new Date().getFullYear());</script> Knewto LLC. All rights reserved.
+      </p>
     </div>
   </footer>
 
@@ -175,6 +187,10 @@
     toggle.addEventListener('click', openMenu);
     close.addEventListener('click', closeMenu);
     overlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('#menu a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
   </script>
 
 </body>
