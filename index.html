@@ -39,6 +39,8 @@
     </button>
     <a href="#about" class="block hover:underline">About Us</a>
     <a href="#services" class="block hover:underline">Services</a>
+    <a href="#team" class="block hover:underline">Team</a>
+    <a href="#contact" class="block hover:underline">Contact Us</a>
   </div>
   <div id="overlay" class="fixed inset-0 z-40 bg-black bg-opacity-25 hidden"></div>
 
@@ -150,8 +152,63 @@
           </div>
         </div>
       </div>
+      <div class="border-b border-gray-200 mt-6"></div>
     </div>
-    <div class="border-b border-gray-200 mt-6"></div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="pt-12 pb-12 scroll-mt-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="pb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Team</h2>
+        <div class="text-gray-700 space-y-4">
+          <p>Coming Soon</p>
+        </div>
+      </div>
+      <div class="border-b border-gray-200"></div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="pt-12 pb-12 scroll-mt-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="pb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+
+        <form id="contact-form" class="space-y-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" name="name" placeholder="Name" required
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
+            <input type="email" name="email_address" placeholder="Email" required
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" name="title" placeholder="Title" required
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
+            <input type="text" name="company" placeholder="Company" required
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
+          </div>
+
+          <textarea name="message" placeholder="Message" required rows="5"
+            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"></textarea>
+
+          <input type="hidden" name="form_token" value="KT93455656_TWOE" />
+
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAABcc5abDdAFZBGcx"></div>
+
+          <div class="pt-2">
+            <button type="submit"
+              class="bg-blue-800 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-900 transition duration-150">
+              Submit
+            </button>
+          </div>
+        </form>
+
+        <div id="form-response" class="mt-6 text-lg font-medium text-center"></div>
+      </div>
+      <div class="border-b border-gray-200"></div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -165,6 +222,7 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script>
     AOS.init();
   </script>
@@ -192,6 +250,50 @@
       link.addEventListener('click', closeMenu);
     });
   </script>
+  <script>
+    const form = document.getElementById("contact-form");
+    const responseBox = document.getElementById("form-response");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      responseBox.textContent = "";
+      responseBox.className = "mt-6 text-lg font-medium text-center";
+
+      const formData = new FormData(form);
+      const turnstileToken = formData.get("cf-turnstile-response");
+
+      if (!turnstileToken) {
+        responseBox.textContent = "⚠️ Please verify you are human.";
+        responseBox.classList.add("text-red-600");
+        return;
+      }
+
+      try {
+        const res = await fetch("https://contact-us.knewto.workers.dev", {
+          method: "POST",
+          body: formData
+        });
+
+        const text = await res.text();
+
+        if (res.ok) {
+          form.style.display = "none";
+          responseBox.textContent = "✅ Thank you! Your message has been sent.";
+          responseBox.classList.add("text-green-600");
+        } else {
+          responseBox.textContent = `⚠️ ${text}`;
+          responseBox.classList.add("text-red-600");
+          turnstile.reset();
+        }
+      } catch (err) {
+        console.error("Fetch Error:", err);
+        responseBox.textContent = "❌ Network error. Please try again.";
+        responseBox.classList.add("text-red-600");
+        turnstile.reset();
+      }
+    });
+  </script>
+
 
 </body>
 
