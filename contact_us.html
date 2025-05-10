@@ -11,9 +11,9 @@
     <form id="contact-form">
         <input type="text" name="name" placeholder="Your Name" required value="Sarah" />
         <input type="email" name="email_address" placeholder="Your Email" required value="Sarah@example.com" />
-        <input type="text" name="title" placeholder="Your Title" required value="Sr Direcor"/>
-        <input type="text" name="company" placeholder="Your Company" required value="SD Consulting"/>
-        <textarea name="message" placeholder="Your Message" required >"I would be interested in learning more"</textarea>
+        <input type="text" name="title" placeholder="Your Title" required value="Sr Direcor" />
+        <input type="text" name="company" placeholder="Your Company" required value="SD Consulting" />
+        <textarea name="message" placeholder="Your Message" required>"I would be interested in learning more"</textarea>
 
         <input type="hidden" name="form_token" value="KT93455656_TWOE" />
 
@@ -44,22 +44,24 @@
             }
 
             try {
-                const res = await fetch("https://contact-us.knewto.workers.dev", {
+                const res = await fetch("https://your-worker.example.workers.dev", {
                     method: "POST",
                     body: formData
                 });
 
                 const text = await res.text();
-                responseBox.textContent = text;
 
                 if (res.ok) {
+                    responseBox.textContent = text;
                     form.reset();
-                    // Reset Turnstile
                     turnstile.reset();
+                } else {
+                    console.error("Worker Error:", res.status, text);
+                    responseBox.textContent = `Error ${res.status}: ${text}`;
                 }
             } catch (err) {
-                console.error(err);
-                responseBox.textContent = "Something went wrong. Please try again.";
+                console.error("Fetch Error:", err);
+                responseBox.textContent = "Network error. Please try again.";
             }
         });
     </script>
