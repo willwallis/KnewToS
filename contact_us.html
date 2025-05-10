@@ -16,9 +16,7 @@
         <textarea name="message" placeholder="Your Message" required>"I would be interested in learning more"</textarea>
 
         <input type="hidden" name="form_token" value="KT93455656_TWOE" />
-
         <div class="cf-turnstile" data-sitekey="0x4AAAAAABcc5abDdAFZBGcx"></div>
-
         <button type="submit">Submit</button>
     </form>
 
@@ -30,39 +28,45 @@
     <script>
         const form = document.getElementById("contact-form");
         const responseBox = document.getElementById("form-response");
-
+      
         form.addEventListener("submit", async (e) => {
-            e.preventDefault(); // prevent default form submission
-
-            const formData = new FormData(form);
-
-            // Required: turnstile must finish first
-            const turnstileToken = formData.get("cf-turnstile-response");
-            if (!turnstileToken) {
-                responseBox.textContent = "Please complete the Turnstile challenge.";
-                return;
+          e.preventDefault();
+          responseBox.textContent = ""; // Clear previous messages
+      
+          const formData = new FormData(form);
+          const turnstileToken = formData.get("cf-turnstile-response");
+      
+          if (!turnstileToken) {
+            responseBox.textContent = "Please confirm that you are human.";
+            return;
+          }
+      
+          try {
+            const res = await fetch("https://contact-us.knewto.workers.dev", {
+              method: "POST",
+              body: formData
+            });
+      
+            const text = await res.text();
+      
+            if (res.ok) {
+              // Success: show message, hide form
+              form.style.display = "none";
+              responseBox.textContent = "✅ Thank you! Your message has been submitted.";
+              responseBox.style.color = "green";
+            } else {
+              // Server returned an error
+              responseBox.textContent = `⚠️ ${text}`;
+              responseBox.style.color = "red";
+              turnstile.reset();
             }
-
-            try {
-                const res = await fetch("https://contact-us.knewto.workers.dev", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const text = await res.text();
-
-                if (res.ok) {
-                    responseBox.textContent = text;
-                    form.reset();
-                    turnstile.reset();
-                } else {
-                    console.error("Worker Error:", res.status, text);
-                    responseBox.textContent = `Error ${res.status}: ${text}`;
-                }
-            } catch (err) {
-                console.error("Fetch Error:", err);
-                responseBox.textContent = "Network error. Please try again.";
-            }
+          } catch (err) {
+            console.error("Fetch Error:", err);
+            responseBox.textContent = "❌ Network error. Please try again.";
+            responseBox.style.color = "red";
+            turnstile.reset();
+          }
         });
-    </script>
+      </script>
+      
 </body>
