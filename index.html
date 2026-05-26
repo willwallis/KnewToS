@@ -39,13 +39,17 @@
     .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 50;
-      background: rgba(247,249,252,.88);
+      background: rgba(247,249,252,.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(220,227,238,.9);
     }
+
+    body { padding-top: 78px; }
 
     .nav {
       height: 78px;
@@ -340,6 +344,7 @@
     @media (max-width: 760px) {
       .container { width: min(100% - 32px, var(--max)); }
       .nav { height: 68px; }
+      body { padding-top: 68px; }
       header { backdrop-filter: none; background: rgba(247,249,252,.96); }
       .hero { padding: 64px 0 34px; min-height: auto; }
       .hero-grid { gap: 34px; }
