@@ -303,9 +303,26 @@
     }
     .contact-form-wrap textarea { resize: none; margin-bottom: 16px; }
     .contact-form-wrap .cf-turnstile { margin-bottom: 20px; }
-    #form-response { margin-top: 20px; font-size: 1rem; font-weight: 600; text-align: center; min-height: 1.4em; }
-    #form-response.success { color: #4ade80; }
-    #form-response.error { color: #f87171; }
+    #form-response { margin-top: 20px; text-align: center; }
+    #form-response.success-panel {
+      padding: 40px 24px;
+    }
+    #form-response.success-panel .success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(74,222,128,.15);
+      border: 1.5px solid rgba(74,222,128,.35);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+    }
+    #form-response.success-panel h3 {
+      color: #fff; font-size: 1.65rem; letter-spacing: -.05em;
+      margin-bottom: 10px;
+    }
+    #form-response.success-panel p {
+      color: #c6d0df; font-size: 1rem; font-weight: 400;
+      max-width: 420px; margin: 0 auto; line-height: 1.6;
+    }
+    #form-response.error { color: #f87171; font-size: 1rem; font-weight: 600; min-height: 1.4em; }
 
     footer {
       background: #07101e;
@@ -505,8 +522,14 @@
 
         if (res.ok) {
           form.style.display = "none";
-          responseBox.textContent = "Thank you! Your message has been sent.";
-          responseBox.className = "success";
+          responseBox.className = "success-panel";
+          responseBox.innerHTML = `
+            <div class="success-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>We'll be in touch.</h3>
+            <p>Thank you for reaching out — someone from our team will follow up shortly.</p>
+          `;
         } else {
           responseBox.textContent = text || "Something went wrong. Please try again.";
           responseBox.className = "error";
