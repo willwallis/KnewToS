@@ -1,255 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Knewto</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/png" href="images/kt_logo_ico.png" />
-
-  <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Numans&display=swap" rel="stylesheet" />
-
+  <title>Knewto | Enterprise AI Readiness & Technology Transformation Advisory</title>
+  <meta name="description" content="Knewto helps enterprises operationalize AI through governance, technology modernization, portfolio transformation, and execution leadership." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --bg: #f7f9fc;
+      --ink: #111722;
+      --navy: #07142d;
+      --text: #39465a;
+      --muted: #6f7b8f;
+      --line: #dce3ee;
+      --accent: #2f63ff;
+      --soft-blue: #eef4ff;
+      --radius-lg: 28px;
+      --max: 1240px;
     }
 
-    .header-title {
-      font-family: 'Numans', sans-serif;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 72% 18%, rgba(47,99,255,.10), transparent 30%),
+        radial-gradient(circle at 22% 55%, rgba(24,184,200,.08), transparent 28%),
+        var(--bg);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247,249,252,.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(220,227,238,.9);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 12px;
+      font-size: .95rem;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { background: var(--navy); color: white; box-shadow: 0 18px 38px rgba(7,20,45,.18); }
+    .button-primary:hover { background: #040b1b; }
+    .hero {
+      min-height: 760px;
+      display: flex;
+      align-items: center;
+      padding: 88px 0 56px;
+      border-bottom: 1px solid rgba(220,227,238,.75);
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .eyebrow:before { content: ""; width: 32px; height: 2px; background: var(--accent); border-radius: 999px; }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { letter-spacing: -.065em; line-height: 1.02; }
+    h1 { font-size: clamp(3.4rem, 7vw, 6.2rem); margin-bottom: 26px; }
+    h2 { font-size: clamp(2.25rem, 4vw, 3.8rem); margin-bottom: 18px; }
+    h3 { font-size: 1.18rem; letter-spacing: -.04em; margin-bottom: 8px; }
+
+    .lead {
+      color: var(--text);
+      font-size: clamp(1.1rem, 1.8vw, 1.38rem);
+      line-height: 1.45;
+      max-width: 650px;
+      margin: 0 auto 22px;
+      font-weight: 500;
+    }
+
+    .microcopy {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: center; }
+
+    .diagram-section {
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 72px 0;
+    }
+
+    .readiness-image-wrap {
+      width: min(860px, 100%);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .readiness-diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    section { padding: 96px 0; }
+
+    .section-head {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 44px;
+    }
+
+    .section-head p {
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .section-head p:last-child { margin-bottom: 0; }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .process-card {
+      position: relative;
+      min-height: 210px;
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(220,227,238,.95);
+      box-shadow: 0 18px 50px rgba(10,25,50,.06);
+    }
+
+    .process-card:not(:last-child):after {
+      content: "›";
+      position: absolute;
+      right: -19px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #61708a;
+      font-size: 2rem;
+      z-index: 2;
+    }
+
+    .step-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #214bd2);
+      color: #fff;
+      box-shadow: 0 16px 32px rgba(47,99,255,.25);
+      flex-shrink: 0;
+    }
+
+    .step-no { color: var(--muted); font-weight: 900; font-size: .82rem; }
+    .process-card p { color: var(--text); margin-bottom: 0; font-size: .98rem; }
+
+    .services {
+      background: var(--soft-blue);
+      border-top: 1px solid rgba(47,99,255,.12);
+      border-bottom: 1px solid rgba(47,99,255,.12);
+    }
+
+    .service-list { border-top: 3px solid var(--accent); }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(47,99,255,.14);
+      align-items: start;
+    }
+
+    .service-row-name { display: block; }
+
+    .svc-no {
+      display: block;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .service-row-name h3 {
+      font-size: 1.65rem;
+      margin-bottom: 0;
+      color: var(--navy);
+      letter-spacing: -.05em;
+      line-height: 1.1;
+    }
+
+    .service-row-desc { color: var(--text); font-size: 1.08rem; margin: 0; line-height: 1.6; }
+
+    .cta-section { padding: 80px 0 104px; }
+    .cta-panel {
+      border-radius: 34px;
+      padding: 74px 48px;
+      text-align: center;
+      color: #fff;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(47,99,255,.42), transparent 28%),
+        radial-gradient(circle at 15% 85%, rgba(24,184,200,.20), transparent 30%),
+        linear-gradient(135deg, #07142d, #101828);
+      box-shadow: 0 30px 90px rgba(7,20,45,.20);
+      overflow: hidden;
+    }
+
+    .cta-panel p {
+      color: #c6d0df;
+      max-width: 680px;
+      margin: 0 auto 30px;
+      font-size: 1.14rem;
+    }
+
+    .cta-panel h2 { max-width: 860px; margin-left: auto; margin-right: auto; }
+
+    .contact-form-wrap { max-width: 680px; margin: 0 auto; text-align: left; }
+    .contact-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .contact-form-wrap input,
+    .contact-form-wrap textarea {
+      width: 100%;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: #fff;
+      font-size: 0.97rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .contact-form-wrap input::placeholder,
+    .contact-form-wrap textarea::placeholder { color: rgba(255,255,255,.42); }
+    .contact-form-wrap input:focus,
+    .contact-form-wrap textarea:focus {
+      border-color: #2f63ff;
+      box-shadow: 0 0 0 3px rgba(47,99,255,.22);
+    }
+    .contact-form-wrap textarea { resize: none; margin-bottom: 16px; }
+    .contact-form-wrap .cf-turnstile { margin-bottom: 20px; }
+    #form-response { margin-top: 20px; font-size: 1rem; font-weight: 600; text-align: center; min-height: 1.4em; }
+    #form-response.success { color: #4ade80; }
+    #form-response.error { color: #f87171; }
+
+    footer {
+      background: #07101e;
+      color: #aab4c6;
+      padding: 42px 0;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 28px; align-items: center; flex-wrap: wrap; }
+    footer strong { color: #fff; }
+
+    @media (max-width: 1100px) {
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-card:after { display: none; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, var(--max)); }
+      .nav { height: 68px; }
+      .hero { padding: 64px 0 34px; min-height: auto; }
+      .hero-grid { gap: 34px; }
+      h1 { font-size: 3.2rem; }
+      .process-grid { grid-template-columns: 1fr; }
+      section { padding: 74px 0; }
+      .cta-row, .button { width: 100%; }
+      .button { border-radius: 14px; }
+      .cta-panel { padding: 50px 24px; }
+      .contact-form-grid { grid-template-columns: 1fr; }
+      .service-row { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    @media (max-width: 520px) {
+      .hero { min-height: calc(100vh - 68px); }
     }
   </style>
 </head>
-
-<body class="bg-blue-50 text-gray-800">
-
-  <!-- Slide-in Menu -->
-  <div id="menu" class="fixed top-0 left-0 h-full w-64 bg-blue-800 text-white hidden z-50 p-6 space-y-4">
-    <button id="menu-close" class="absolute top-4 right-4 text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    <a href="#about" class="block hover:underline">About Us</a>
-    <a href="#services" class="block hover:underline">Services</a>
-    <a href="#team" class="block hover:underline">Team</a>
-    <a href="#contact" class="block hover:underline">Contact Us</a>
-  </div>
-  <div id="overlay" class="fixed inset-0 z-40 bg-black bg-opacity-25 hidden"></div>
-
-  <!-- Navigation -->
-  <nav class="bg-blue-950 text-white w-full px-4 py-3 flex justify-between items-center sticky top-0 z-30">
-    <button id="menu-toggle" class="focus:outline-none" aria-label="Open menu">
-      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-    <div
-      class="absolute left-1/2 transform -translate-x-1/2 font-semibold header-title text-xl sm:text-2xl md:text-3xl">
-      KT Consulting
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">Knewto<span>.</span></a>
     </div>
-  </nav>
+  </header>
 
-  <!-- About Section -->
-  <section id="about" class="pt-12 pb-12 scroll-mt-24">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="pb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">About Us</h2>
-        <div class="text-gray-700 space-y-4">
-          <p>We are a boutique advisory firm that partners with senior leaders to drive transformation and unlock
-            executional excellence. With a deep understanding of business strategy, operations, and digital innovation,
-            we help organizations bridge the gap between aspiration and delivery—achieving measurable impact, faster.
-          </p>
-          <p>We take a hands-on, collaborative approach to implementation. From discovery through delivery, we embed
-            alongside your teams. Whether launching a transformation program, rethinking digital operations, or rolling out enterprise
-            tech, we bring clarity and structure to complex change.</p>
+  <main>
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI Readiness & Enterprise Transformation</div>
+          <h1>Operationalizing AI for the Enterprise</h1>
+          <p class="lead">Knewto helps organizations modernize governance, delivery, and technology operating models required to adopt AI successfully at scale.</p>
+          <p class="microcopy">AI adoption is not just a technology initiative. It is an operational transformation challenge.</p>
+          <div class="cta-row">
+            <a href="#contact" class="button button-primary">Schedule a Discussion →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="diagram-section" aria-label="AI readiness operating model visualization">
+      <div class="container">
+        <div class="section-head">
+          <h2>AI Readiness, Not AI Theater</h2>
+          <p>Successful AI adoption requires more than access to AI tools. Organizations must establish the governance, operating models, delivery capability, technology foundations, and executive alignment required to integrate AI responsibly and effectively at scale.</p>
+          <p>This framework outlines the core organizational capabilities required to move from isolated experimentation to sustainable enterprise AI adoption.</p>
+        </div>
+        <div class="readiness-image-wrap">
+          <img class="readiness-diagram" src="images/Alt Readiness3.png" alt="AI Readiness diagram showing strategy, data and knowledge readiness, governance risk and security, technology platforms, investment, AI operating model, workforce readiness, and measurement optimization around a central AI readiness model." />
         </div>
       </div>
-      <div class="border-b border-gray-200"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services Section -->
-  <section id="services" class="pt-8 pb-12 scroll-mt-24">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="pb-6" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6">Services</h2>
-
-        <!-- Service Blocks -->
-        <!-- Strategic Planning -->
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Strategic Planning</h3>
-            <p>We translate vision into action. From mission alignment to initiative design and resource allocation, we
-              build practical roadmaps that turn ambition into outcomes.</p>
-          </div>
-          <div class="w-full h-full">
-            <img src="images/Strategy.png" alt="Strategic planning concept" class="w-full h-full object-cover" />
-          </div>
+    <section id="approach">
+      <div class="container">
+        <div class="section-head">
+          <h2>How we help organizations succeed</h2>
+          <p>We work with leadership teams to move from AI ambition to governed, operational, and measurable adoption.</p>
         </div>
-
-        <div class="mt-6"></div>
-
-        <!-- Portfolio & Project Management -->
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="w-full h-full order-2 md:order-1">
-            <img src="images/PM.png" alt="Project management visualization" class="w-full h-full object-cover" />
-          </div>
-          <div class="flex flex-col justify-center p-6 bg-white text-gray-700 order-1 md:order-2">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Portfolio & Project Management</h3>
-            <p>We deliver with discipline. Our structured approach to portfolio governance and program execution ensures
-              alignment, transparency, and results across the enterprise.</p>
-          </div>
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="step-top"><div class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div><div><div class="step-no">01</div><h3>Assess</h3></div></div>
+            <p>Evaluate current state across strategy, governance, data, technology, and delivery.</p>
+          </article>
+          <article class="process-card">
+            <div class="step-top"><div class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div><div><div class="step-no">02</div><h3>Align</h3></div></div>
+            <p>Define target operating model, prioritize initiatives, and build the transformation roadmap.</p>
+          </article>
+          <article class="process-card">
+            <div class="step-top"><div class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><div><div class="step-no">03</div><h3>Operationalize</h3></div></div>
+            <p>Implement governance, delivery frameworks, and modern technology capabilities.</p>
+          </article>
+          <article class="process-card">
+            <div class="step-top"><div class="step-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="9 5 19 5 19 15"/></svg></div><div><div class="step-no">04</div><h3>Scale</h3></div></div>
+            <p>Measure outcomes, optimize performance, and scale AI capabilities enterprise-wide.</p>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div class="mt-6"></div>
-
-        <!-- Operational Excellence -->
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Operational Excellence</h3>
-            <p>We simplify complexity. By redesigning core processes for efficiency, scalability, and performance, we
-              reduce cost, minimize risk, and boost speed to value.</p>
-          </div>
-          <div class="w-full h-full">
-            <img src="images/OpsEx.png" alt="Business operations illustration" class="w-full h-full object-cover" />
-          </div>
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Core capabilities</h2>
+          <p>Focused advisory and execution leadership across the capabilities enterprises need to operationalize AI and modernize technology delivery.</p>
         </div>
-
-        <div class="mt-6"></div>
-
-        <!-- People & Organizational Design -->
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="w-full h-full order-2 md:order-1">
-            <img src="images/People.png" alt="Organizational team concept" class="w-full h-full object-cover" />
+        <div class="service-list">
+          <div class="service-row">
+            <div class="service-row-name">
+              <span class="svc-no">01</span>
+              <h3>AI Readiness & Governance</h3>
+            </div>
+            <p class="service-row-desc">Operational frameworks and governance models required for sustainable enterprise AI adoption.</p>
           </div>
-          <div class="flex flex-col justify-center p-6 bg-white text-gray-700 order-1 md:order-2">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-800">People & Organizational Design</h3>
-            <p>We empower people to perform. We shape the structures, capabilities, and cultures needed to sustain
-              agility, engagement, and readiness for change.</p>
+          <div class="service-row">
+            <div class="service-row-name">
+              <span class="svc-no">02</span>
+              <h3>Technology Strategy & Modernization</h3>
+            </div>
+            <p class="service-row-desc">Align architecture, operating models, and transformation priorities to support scalable modernization.</p>
           </div>
-        </div>
-
-        <div class="mt-6"></div>
-
-        <!-- Digital Enablement -->
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="flex flex-col justify-center p-6 bg-white text-gray-700">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Digital Enablement</h3>
-            <p>We make innovation real. From emerging technologies to enterprise platforms, we identify opportunities,
-              architect solutions, and guide execution to maximize business value.</p>
+          <div class="service-row">
+            <div class="service-row-name">
+              <span class="svc-no">03</span>
+              <h3>Portfolio & Delivery Transformation</h3>
+            </div>
+            <p class="service-row-desc">Improve prioritization, visibility, governance, and execution capability across enterprise initiatives.</p>
           </div>
-          <div class="w-full h-full">
-            <img src="images/Digital.png" alt="Digital transformation image" class="w-full h-full object-cover" />
+          <div class="service-row">
+            <div class="service-row-name">
+              <span class="svc-no">04</span>
+              <h3>Transformation Execution Leadership</h3>
+            </div>
+            <p class="service-row-desc">Provide experienced senior leadership from roadmap definition through operational implementation.</p>
           </div>
         </div>
       </div>
-      <div class="border-b border-gray-200 mt-6"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Team Section -->
-  <section id="team" class="pt-12 pb-12 scroll-mt-24">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="pb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Team</h2>
-        <div class="text-gray-700 space-y-4">
-          <p>Coming Soon</p>
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Schedule a Discussion</h2>
+          <p>Tell us about your priorities and we'll be in touch to explore how Knewto can help.</p>
+          <div class="contact-form-wrap">
+            <form id="contact-form" novalidate>
+              <div class="contact-form-grid">
+                <input type="text" name="name" placeholder="Name" required />
+                <input type="email" name="email_address" placeholder="Email" required />
+              </div>
+              <div class="contact-form-grid">
+                <input type="text" name="title" placeholder="Title" required />
+                <input type="text" name="company" placeholder="Company" required />
+              </div>
+              <textarea name="message" placeholder="Message" rows="5" required></textarea>
+              <input type="hidden" name="form_token" value="KT93455656_TWOE" />
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAABcc5abDdAFZBGcx"></div>
+              <button type="submit" class="button button-primary" style="background:#fff;color:#07142d;">Submit →</button>
+            </form>
+            <div id="form-response"></div>
+          </div>
         </div>
       </div>
-      <div class="border-b border-gray-200"></div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Contact Us Section -->
-  <section id="contact" class="pt-12 pb-12 scroll-mt-24">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="pb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-
-        <form id="contact-form" class="space-y-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input type="text" name="name" placeholder="Name" required
-              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
-            <input type="email" name="email_address" placeholder="Email" required
-              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input type="text" name="title" placeholder="Title" required
-              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
-            <input type="text" name="company" placeholder="Company" required
-              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300" />
-          </div>
-
-          <textarea name="message" placeholder="Message" required rows="5"
-            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"></textarea>
-
-          <input type="hidden" name="form_token" value="KT93455656_TWOE" />
-
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAABcc5abDdAFZBGcx"></div>
-
-          <div class="pt-2">
-            <button type="submit"
-              class="bg-blue-800 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-900 transition duration-150">
-              Submit
-            </button>
-          </div>
-        </form>
-
-        <div id="form-response" class="mt-6 text-lg font-medium text-center"></div>
-      </div>
-      <div class="border-b border-gray-200"></div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white shadow p-6 mt-10">
-    <div class="max-w-5xl mx-auto text-center text-sm text-gray-500">
-      <p>©
-        <script>document.write(new Date().getFullYear());</script> Knewto LLC. All rights reserved.
-      </p>
+  <footer>
+    <div class="container footer-row">
+      <div><strong>Knewto.</strong> Enterprise transformation advisory focused on AI readiness, governance, and operational execution.</div>
+      <div>© <span id="yr"></span> Knewto LLC</div>
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <script>
-    AOS.init();
-  </script>
-  <script>
-    const menu = document.getElementById('menu');
-    const overlay = document.getElementById('overlay');
-    const toggle = document.getElementById('menu-toggle');
-    const close = document.getElementById('menu-close');
-
-    function openMenu() {
-      menu.classList.remove('hidden');
-      overlay.classList.remove('hidden');
-    }
-
-    function closeMenu() {
-      menu.classList.add('hidden');
-      overlay.classList.add('hidden');
-    }
-
-    toggle.addEventListener('click', openMenu);
-    close.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
-
-    document.querySelectorAll('#menu a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-  </script>
   <script>
     const form = document.getElementById("contact-form");
     const responseBox = document.getElementById("form-response");
@@ -257,14 +484,14 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       responseBox.textContent = "";
-      responseBox.className = "mt-6 text-lg font-medium text-center";
+      responseBox.className = "";
 
       const formData = new FormData(form);
       const turnstileToken = formData.get("cf-turnstile-response");
 
       if (!turnstileToken) {
-        responseBox.textContent = "⚠️ Please verify you are human.";
-        responseBox.classList.add("text-red-600");
+        responseBox.textContent = "Please verify you are human.";
+        responseBox.className = "error";
         return;
       }
 
@@ -278,23 +505,19 @@
 
         if (res.ok) {
           form.style.display = "none";
-          responseBox.textContent = "✅ Thank you! Your message has been sent.";
-          responseBox.classList.add("text-green-600");
+          responseBox.textContent = "Thank you! Your message has been sent.";
+          responseBox.className = "success";
         } else {
-          responseBox.textContent = `⚠️ ${text}`;
-          responseBox.classList.add("text-red-600");
-          turnstile.reset();
+          responseBox.textContent = text || "Something went wrong. Please try again.";
+          responseBox.className = "error";
+          if (typeof turnstile !== "undefined") turnstile.reset();
         }
       } catch (err) {
-        console.error("Fetch Error:", err);
-        responseBox.textContent = "❌ Network error. Please try again.";
-        responseBox.classList.add("text-red-600");
-        turnstile.reset();
+        responseBox.textContent = "Network error. Please try again.";
+        responseBox.className = "error";
+        if (typeof turnstile !== "undefined") turnstile.reset();
       }
     });
   </script>
-
-
 </body>
-
 </html>
